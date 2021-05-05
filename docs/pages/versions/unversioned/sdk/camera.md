@@ -241,7 +241,7 @@ snap = async () => {
 
 ### `takePictureAsync()`
 
-Takes a picture and saves it to app's cache directory. Photos are rotated to match device's orientation (if **options.skipProcessing** flag is not enabled) and scaled to match the preview. Anyway on Android it is essential to set `ratio` prop to get a picture with correct dimensions.
+Takes a picture and saves it to the app's cache directory. Photos are rotated to match the device's orientation (if **options.skipProcessing** flag is not enabled) and scaled to match the preview. On Android, it is essential to set `ratio` prop to get a picture with correct dimensions.
 
 > **Note**: Make sure to wait for the [`onCameraReady`](#oncameraready) callback before calling this method.
 
@@ -254,7 +254,7 @@ Takes a picture and saves it to app's cache directory. Photos are rotated to mat
   - **quality (_number_)** -- Specify the quality of compression, from 0 to 1. 0 means compress for small size, 1 means compress for maximum quality.
   - **base64 (_boolean_)** -- Whether to also include the image data in Base64 format.
   - **exif (_boolean_)** -- Whether to also include the EXIF data for the image.
-  - **onPictureSaved (_function_)** -- A callback invoked when picture is saved. If set, the promise of this method will resolve immediately with no data after picture is captured. The data that it should contain will be passed to this callback. If displaying or processing a captured photo right after taking it is not your case, this callback lets you skip waiting for it to be saved.
+  - **onPictureSaved (_function_)** -- A callback invoked when the picture is saved. If set, the promise of this method will resolve immediately with no data after the picture is captured. The data that it contains will be passed to this callback. If displaying or processing a captured photo right after taking it is not your case, this callback lets you skip waiting for it to be saved.
   - **skipProcessing (_boolean_)** - Android only. If set to `true`, camera skips orientation adjustment and returns an image straight from the device's camera. If enabled, `quality` option is discarded (processing pipeline is skipped as a whole). Although enabling this option reduces image delivery time significantly, it may cause the image to appear in a wrong orientation in the `Image` component (at the time of writing, it does not respect EXIF orientation of the images).
     > **Note**: Enabling **skipProcessing** would cause orientation uncertainty. `Image` component does not respect EXIF stored orientation information, that means obtained image would be displayed wrongly (rotated by 90°, 180° or 270°). Different devices provide different orientations. For example some Sony Xperia or Samsung devices don't provide correctly oriented images by default. To always obtain correctly oriented image disable **skipProcessing** option.
 
